@@ -77,14 +77,19 @@ function game(userInput) {
     let computerScore = 0;
     let round = 0;
 
-    // Play 5 rounds of RPS
-    while round < 5 {
+    while (round < 5) {
         // Generate computer selection , Play 1 round of RPS
         let computerSelection = getComputerChoice();
         let outcome = playRound(userInput, computerSelection);
-        
-        // increment score based on outcome of playRound, Increment round
+
+        // Increment score based on outcome of playRound
         outcome = "win" ? userScore++ : computerScore++;
+
+        // Update score display
+        yourScore.innerText = userScore; 
+        compScore.innerText = computerScore; 
+
+        // Increment round
         round++;
     }
 
@@ -102,9 +107,5 @@ function game(userInput) {
 
 // A function that toggles table display upon clicking submit button for the first time
 
-
-
-// log winner results of each round and the total game to the console
-// Use prompt() to get user input.????
 
 
