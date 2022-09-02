@@ -42,6 +42,7 @@ function playRound(userInput, computerSelection) {
             outcomeMessage.innerText = "You win! Rock beats scissors";
             return "win";
         } else {
+            outcomeMessage.innerText = "It's a tie!";
             return false;
         }
     } else if (userInput === "paper"){
@@ -52,6 +53,7 @@ function playRound(userInput, computerSelection) {
             outcomeMessage.innerText = "You win! Paper beats rock";
             return "win";
         } else {
+            outcomeMessage.innerText = "It's a tie!";
             return false;
         }
     } else if (userInput === "scissors"){
@@ -62,6 +64,7 @@ function playRound(userInput, computerSelection) {
             outcomeMessage.innerText = "You win! Scissors beats paper";
             return "win";
         } else {
+            outcomeMessage.innerText = "It's a tie!";
             return false;
         }
     }
@@ -74,18 +77,18 @@ function game(userInput) {
     let computerScore = 0;
     let round = 0;
 
+    // Play 5 rounds of RPS
     while round < 5 {
+        // Generate computer selection , Play 1 round of RPS
         let computerSelection = getComputerChoice();
         let outcome = playRound(userInput, computerSelection);
-        // increment score based on outcome of playRound
-        if (outcome = "win") {
-            userScore++;
-        } else if (outcome = "lose") {
-            computerScore++;
-        }
+        
+        // increment score based on outcome of playRound, Increment round
+        outcome = "win" ? userScore++ : computerScore++;
         round++;
     }
-    
+
+    // Find the winner and display win/loss message
     if (userScore > computerScore){
         outcomeMessage.innerText = "You won!";
         return;
