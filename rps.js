@@ -13,19 +13,11 @@ const compScore = document.querySelector(".cscore");
 
 // A function that generates a random number between 1 and 3
 function getRandomNumber() {
-    let num = Math.floor(Math.random(1) * 10);
-    if (num < 0) {
-        num *= -1;
+    let num = Math.floor(Math.random() * 4);
+    if (num === 1 || num === 2 || num === 3) {
         return num;
     }
-    if (num > 3) {
-        num -= (num - 3);
-        return num;
-    }
-    if (num === 0) {
-        num = getRandomNumber();
-        return num;
-    }
+    return getRandomNumber();
 }
 
 // A function that randomly returns either ‘Rock’ ‘Paper’ or ‘Scissors’.  
@@ -44,32 +36,35 @@ function getComputerChoice () {
 function playRound(userInput, computerSelection) {
     if (userInput === "rock"){
         if (computerSelection === "paper") {
+            outcomeMessage.innerText = "You Lose! Paper beats rock";
             return "lose";
         } else if (computerSelection === "scissors") {
+            outcomeMessage.innerText = "You win! Rock beats scissors";
             return "win";
         } else {
             return false;
         }
     } else if (userInput === "paper"){
         if (computerSelection === "scissors") {
+            outcomeMessage.innerText = "You Lose! Scissors beats paper";
             return "lose";
         } else if (computerSelection === "rock") {
+            outcomeMessage.innerText = "You win! Paper beats rock";
             return "win";
         } else {
             return false;
         }
     } else if (userInput === "scissors"){
         if (computerSelection === "rock") {
+            outcomeMessage.innerText = "You Lose! Rock beats scissors";
             return "lose";
         } else if (computerSelection === "paper") {
+            outcomeMessage.innerText = "You win! Scissors beats paper";
             return "win";
         } else {
             return false;
         }
     }
-    // conditionals for rock/paper/scissor comparison
-    // return a string declaring the round winner ("You <Lose/Win>! <Paper> beats <Rock>")
-    return;
 }
 
 // A function that plays a 5-round game of RPS. 
@@ -79,13 +74,26 @@ function game(userInput) {
     let computerScore = 0;
     let round = 0;
 
-
     while round < 5 {
         let computerSelection = getComputerChoice();
-        let winner = playRound(userInput, computerSelection) 
+        let outcome = playRound(userInput, computerSelection);
         // increment score based on outcome of playRound
+        if (outcome = "win") {
+            userScore++;
+        } else if (outcome = "lose") {
+            computerScore++;
+        }
+        round++;
     }
-    // report a winner or loser at the end
+    
+    if (userScore > computerScore){
+        outcomeMessage.innerText = "You won!";
+        return;
+    } else if (userScore < computerScore) {
+        outcomeMessage.innerText = "You lost!";
+        return;
+    }
+    outcomeMessage.innerText = "It's a tie!"
     return;
 }
 
