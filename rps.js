@@ -1,5 +1,6 @@
 // Input variable
-const userInput = document.queryCommandIndeterm("select");
+let userInput;
+console.log("user input:", userInput)
 
 // Submit button
 const submit = document.querySelector('input');
@@ -10,6 +11,12 @@ const outcomeMessage = document.querySelector('h1');
 // Score variables
 const yourScore = document.querySelector(".yscore");
 const compScore = document.querySelector(".cscore");
+
+// A function that returns the value of user's dropdown selection 
+function inputFinder (obj) {
+    userInput = obj.value;
+    return;
+}
 
 // A function that generates a random number between 1 and 3
 function getRandomNumber() {
@@ -102,7 +109,7 @@ function game(userInput) {
         // Update score display
         yourScore.innerText = userScore; 
         compScore.innerText = computerScore; 
- 
+
         // Increment round
         round++;
     }

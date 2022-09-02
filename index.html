@@ -35,7 +35,7 @@
         <h4> Let's go!</h4>
         <div class="form">
             <label for="select">Select one: </label>
-            <select>
+            <select onchange="inputFinder(this)">
                 <option value="rock">Rock</option>
                 <option value="paper">Paper</option>
                 <option value="scissors">Scissors</option>
@@ -81,11 +81,5 @@
                 <td class="cscore"></td>
             </tr>
         </table>
-
-        <!-- Computer Score: <> -->
-        <!-- Your Score: <> -->
-
-
-
     </body>
 </html>
