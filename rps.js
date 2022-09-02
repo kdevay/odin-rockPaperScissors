@@ -20,6 +20,14 @@ function getRandomNumber() {
     return getRandomNumber();
 }
 
+// A function that finds the current selection element
+function findElement(round, bool) {
+    if (bool) {
+        return (you + round);
+    }
+    return (computer + round);
+}
+
 // A function that randomly returns either ‘Rock’ ‘Paper’ or ‘Scissors’.  
 function getComputerChoice () {
     let num = getRandomNumber();
@@ -78,17 +86,23 @@ function game(userInput) {
     let round = 0;
 
     while (round < 5) {
-        // Generate computer selection , Play 1 round of RPS
+        // Generate computer selection
         let computerSelection = getComputerChoice();
-        let outcome = playRound(userInput, computerSelection);
 
-        // Increment score based on outcome of playRound
+        // Update selection display
+        let yourElement =  findElement(round, true);
+        let compElement = findElement(round, false);
+        yourElement.innerText = userInput;
+        compElement.innerText = computerSelection;
+
+        // Play 1 round of RPS and increment score
+        let outcome = playRound(userInput, computerSelection);
         outcome = "win" ? userScore++ : computerScore++;
 
         // Update score display
         yourScore.innerText = userScore; 
         compScore.innerText = computerScore; 
-
+ 
         // Increment round
         round++;
     }
