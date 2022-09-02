@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>Rock Paper Scissors</title>
+        <script src="rps.js"></script>
+        <style>      
+            html {
+                font-family: "Nunito", "Comfortaa", sans-serif;
+            }
+            body {
+                width: 50%;
+                max-width: 800px;
+                min-width: 480px;
+                margin: 0 auto;
+            }
+            .lastResult {
+                color: white;
+                padding: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Rock Paper Scissors</h2>
+        <p>Play against the computer in this digital version of the classic game.</p>
+        <ul>
+            <li>Rock beats scissors</li>
+            <li>Paper beats rock</li>
+            <li>Scissors beats paper</li>
+        </ul>
+        <h4>Rules:</h4>
+        <p> In each round, the user will select either rock, paper, or scissors from the dropdown menu (the computer’s selection will be generated randomly).</p>
+        <p>Whoever has won the most after 5 rounds wins the game.</p>
+
+        <h4> Let's go!</h4>
+        <div class="form">
+            <label for="select">Select one: </label>
+            <select>
+                <option value="rock">Rock</option>
+                <option value="paper">Paper</option>
+                <option value="scissors">Scissors</option>
+            </select>
+            <button>submit</button>
+        </div>
+        
+        <!-- Round 1:  -->
+        <!-- Round 2: -->
+        <!-- Round 3: -->
+        <!-- Round 4: -->
+        <!-- Round 5: -->
+        <table>
+            <tr>
+                <th></th>
+                <th>You</th>
+                <th>Computer</th>
+            </tr>
+            <tr>
+                <td>Round 1:</td>
+                <td class="you1"></td>
+                <td class="computer1"></td>
+            </tr>
+            <tr>
+                <td>Round 2:</td>
+                <td class="you2"></td>
+                <td class="computer2"></td>
+            </tr>
+            <tr>
+                <td>Round 3:</td>
+                <td class="you3"></td>
+                <td class="computer3"></td>
+            </tr>
+            <tr>
+                <td>Round 4:</td>
+                <td class="you4"></td>
+                <td class="computer4"></td>
+            </tr>
+            <tr>
+                <td>Round 5:</td>
+                <td class="you5"></td>
+                <td class="computer5"></td>
+            </tr>
+        </table>
+
+        <!-- <win or lose notification goes here> -->
+
+        <!-- Computer Score: <> -->
+        <!-- Your Score: <> -->
+
+
+
+    </body>
+</html>
