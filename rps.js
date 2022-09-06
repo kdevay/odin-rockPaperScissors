@@ -1,10 +1,6 @@
-// Input variable
-let userInput;
-console.log("user input:", userInput)
-
 // Submit button
-const submit = document.querySelector('input');
-submit.addEventListener('click', game(userInput));
+const button = document.querySelector('input');
+button.addEventListener('click', game(inputFinder()));
 
 // Win / Lose message
 const outcomeMessage = document.querySelector('h1');
@@ -13,9 +9,10 @@ const yourScore = document.querySelector(".yscore");
 const compScore = document.querySelector(".cscore");
 
 // A function that returns the value of user's dropdown selection 
-function inputFinder (obj) {
-    userInput = obj.value;
-    return;
+function inputFinder() {
+    var userInput = document.getElementById("select").value;
+    console.log(userInput)
+    return userInput;
 }
 
 // A function that generates a random number between 1 and 3
@@ -27,13 +24,6 @@ function getRandomNumber() {
     return getRandomNumber();
 }
 
-// A function that finds the current selection element
-function findElement(round, bool) {
-    if (bool) {
-        return (you + round);
-    }
-    return (computer + round);
-}
 
 // A function that randomly returns either ‘Rock’ ‘Paper’ or ‘Scissors’.  
 function getComputerChoice () {
@@ -93,12 +83,15 @@ function game(userInput) {
     let round = 0;
 
     while (round < 5) {
+        // Increment round
+        round++;
+
         // Generate computer selection
         let computerSelection = getComputerChoice();
 
         // Update selection display
-        let yourElement =  findElement(round, true);
-        let compElement = findElement(round, false);
+        let yourElement =  document.getElementById("you" + round);
+        let compElement = document.getElementById("computer" + round);
         yourElement.innerText = userInput;
         compElement.innerText = computerSelection;
 
@@ -109,9 +102,6 @@ function game(userInput) {
         // Update score display
         yourScore.innerText = userScore; 
         compScore.innerText = computerScore; 
-
-        // Increment round
-        round++;
     }
 
     // Find the winner and display win/loss message

@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Rock Paper Scissors</title>
-        <script src="rps.js"></script>
         <style>      
             html {
                 font-family: "Nunito", "Comfortaa", sans-serif;
@@ -35,12 +34,12 @@
         <h4> Let's go!</h4>
         <div class="form">
             <label for="select">Select one: </label>
-            <select onchange="inputFinder(this)">
+            <select id="select" onchange="inputFinder(this)">
                 <option value="rock">Rock</option>
                 <option value="paper">Paper</option>
                 <option value="scissors">Scissors</option>
             </select>
-            <input type="submit" value="submit">
+            <input type="button" value="submit">
 
         </div>
         <h1></h1> <br>
@@ -81,5 +80,6 @@
                 <td class="cscore"></td>
             </tr>
         </table>
+        <script src="rps.js"></script>
     </body>
 </html>
