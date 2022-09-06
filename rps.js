@@ -1,19 +1,12 @@
 // Submit button
 const button = document.querySelector('input');
-button.addEventListener('click', game(inputFinder()));
+button.addEventListener('click', game);
 
 // Win / Lose message
 const outcomeMessage = document.querySelector('h1');
-// Score variables
-const yourScore = document.querySelector(".yscore");
-const compScore = document.querySelector(".cscore");
-
-// A function that returns the value of user's dropdown selection 
-function inputFinder() {
-    var userInput = document.getElementById("select").value;
-    console.log(userInput)
-    return userInput;
-}
+// Running/final score variables
+const yourScore = document.getElementById("yscore");
+const compScore = document.getElementById("cscore");
 
 // A function that generates a random number between 1 and 3
 function getRandomNumber() {
@@ -23,7 +16,6 @@ function getRandomNumber() {
     }
     return getRandomNumber();
 }
-
 
 // A function that randomly returns either ‘Rock’ ‘Paper’ or ‘Scissors’.  
 function getComputerChoice () {
@@ -76,7 +68,10 @@ function playRound(userInput, computerSelection) {
 }
 
 // A function that plays a 5-round game of RPS. 
-function game(userInput) {
+function game() {
+    //get user input
+    let userInput = document.getElementById("select").value;
+
     // Two variables for tracking score, one for tracking round
     let userScore = 0;
     let computerScore = 0;
@@ -90,14 +85,14 @@ function game(userInput) {
         let computerSelection = getComputerChoice();
 
         // Update selection display
-        let yourElement =  document.getElementById("you" + round);
-        let compElement = document.getElementById("computer" + round);
+        let yourElement =  document.getElementById(("you" + round));
+        let compElement = document.getElementById(("computer" + round));
         yourElement.innerText = userInput;
         compElement.innerText = computerSelection;
 
         // Play 1 round of RPS and increment score
         let outcome = playRound(userInput, computerSelection);
-        outcome = "win" ? userScore++ : computerScore++;
+        outcome === "win" ? userScore++ : computerScore++;
 
         // Update score display
         yourScore.innerText = userScore; 
