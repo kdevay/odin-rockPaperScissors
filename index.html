@@ -13,9 +13,19 @@
                 min-width: 480px;
                 margin: 0 auto;
             }
-            .lastResult {
-                color: white;
-                padding: 3px;
+            h1 {
+                height: 1em;
+            }
+            table {
+                max-width: 800px;
+                min-width: 480px;
+            }
+            th, td {
+                min-width: 160px;
+                max-width: 266px;
+            }
+            .selections {
+                text-align: center;
             }
         </style>
     </head>
@@ -29,9 +39,9 @@
         </ul>
         <h4>Rules:</h4>
         <p> In each round, the user will select either rock, paper, or scissors from the dropdown menu (the computer’s selection will be generated randomly).</p>
-        <p>Whoever has won the most after 5 rounds wins the game.</p>
+        <p>Whoever has won the most after 5 rounds wins the game.</p><br>
 
-        <h4> Let's go!</h4>
+        <h2> Let's go!</h2>
         <div class="form">
             <label for="select">Select one: </label>
             <select id="select">
@@ -51,33 +61,33 @@
             </tr>
             <tr>
                 <td>Round 1:</td>
-                <td id="you1"></td>
-                <td id="computer1"></td>
+                <td class="selections" id="you1"></td>
+                <td class="selections" id="computer1"></td>
             </tr>
             <tr>
                 <td>Round 2:</td>
-                <td id="you2"></td>
-                <td id="computer2"></td>
+                <td class="selections" id="you2"></td>
+                <td class="selections" id="computer2"></td>
             </tr>
             <tr>
                 <td>Round 3:</td>
-                <td id="you3"></td>
-                <td id="computer3"></td>
+                <td class="selections" id="you3"></td>
+                <td class="selections" id="computer3"></td>
             </tr>
             <tr>
                 <td>Round 4:</td>
-                <td id="you4"></td>
-                <td id="computer4"></td>
+                <td class="selections" id="you4"></td>
+                <td class="selections" id="computer4"></td>
             </tr>
             <tr>
                 <td>Round 5:</td>
-                <td id="you5"></td>
-                <td id="computer5"></td>
+                <td class="selections" id="you5"></td>
+                <td class="selections" id="computer5"></td>
             </tr>
             <tr>
                 <td>Score:</td>
-                <td id="yscore"></td>
-                <td id="cscore"></td>
+                <td class="selections" id="yscore"></td>
+                <td class="selections" id="cscore"></td>
             </tr>
         </table>
         <script src="rps.js"></script>

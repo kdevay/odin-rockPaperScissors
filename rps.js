@@ -2,6 +2,11 @@
 const button = document.querySelector('input');
 button.addEventListener('click', game);
 
+// Two variables for tracking score, one for tracking round
+let userScore = 0;
+let computerScore = 0;
+let round = 0;
+
 // Win / Lose message
 const outcomeMessage = document.querySelector('h1');
 // Running/final score variables
@@ -32,6 +37,7 @@ function getComputerChoice () {
 // A function that plays a single round of Rock Paper Scissors. ("You Lose! Paper beats Rock"); 
 function playRound(userInput, computerSelection) {
     if (userInput === "rock"){
+        round++;
         if (computerSelection === "paper") {
             outcomeMessage.innerText = "You Lose! Paper beats rock";
             return "lose";
@@ -43,6 +49,7 @@ function playRound(userInput, computerSelection) {
             return false;
         }
     } else if (userInput === "paper"){
+        round++;
         if (computerSelection === "scissors") {
             outcomeMessage.innerText = "You Lose! Scissors beats paper";
             return "lose";
@@ -54,6 +61,7 @@ function playRound(userInput, computerSelection) {
             return false;
         }
     } else if (userInput === "scissors"){
+        round++;
         if (computerSelection === "rock") {
             outcomeMessage.innerText = "You Lose! Rock beats scissors";
             return "lose";
@@ -69,20 +77,20 @@ function playRound(userInput, computerSelection) {
 
 // A function that plays a 5-round game of RPS. 
 function game() {
-    //get user input
-    let userInput = document.getElementById("select").value;
-
-    // Two variables for tracking score, one for tracking round
-    let userScore = 0;
-    let computerScore = 0;
-    let round = 0;
-
-    while (round < 5) {
-        // Increment round
-        round++;
+    if (round < 5) {
+        // Get user input
+        let userInput = document.getElementById("select").value;
 
         // Generate computer selection
         let computerSelection = getComputerChoice();
+
+        // Play 1 round of RPS and increment score
+        let outcome = playRound(userInput, computerSelection);
+        if (outcome === "win") {
+            userScore++ 
+        } else if (outcome === "lose") {
+            computerScore++;
+        }
 
         // Update selection display
         let yourElement =  document.getElementById(("you" + round));
@@ -90,24 +98,25 @@ function game() {
         yourElement.innerText = userInput;
         compElement.innerText = computerSelection;
 
-        // Play 1 round of RPS and increment score
-        let outcome = playRound(userInput, computerSelection);
-        outcome === "win" ? userScore++ : computerScore++;
-
         // Update score display
         yourScore.innerText = userScore; 
         compScore.innerText = computerScore; 
     }
 
-    // Find the winner and display win/loss message
-    if (userScore > computerScore){
-        outcomeMessage.innerText = "You won!";
-        return;
-    } else if (userScore < computerScore) {
-        outcomeMessage.innerText = "You lost!";
+    // If final round is complete
+    if (round === 5) {
+        // Find the winner and display win/loss message
+        if (userScore > computerScore){
+            outcomeMessage.innerText = "You won!";
+            return;
+        } else if (userScore < computerScore) {
+            outcomeMessage.innerText = "You lost!";
+            return;
+        }
+        outcomeMessage.innerText = "It's a tie!"
         return;
     }
-    outcomeMessage.innerText = "It's a tie!"
+    // If not yet on final round, return.
     return;
 }
 
