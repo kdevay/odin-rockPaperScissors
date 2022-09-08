@@ -1,28 +1,37 @@
-// Submit button
-const button = document.querySelector('input');
-button.addEventListener('click', game);
+// Add event listener to buttons
+const buttons = document.querySelectorAll('button');
 
-// Two variables for tracking score, one for tracking round
+for(let b = 0; b < buttons.length; b++){
+    buttons[b].addEventListener('click', game);
+}
+// I couldn't get this to work--need to review later
+// [].forEach(button => {
+//     console.log("button:", button);
+//     button.addEventListener('click', game);
+// });
+
+
+// Variables tracking score, and round
 let userScore = 0;
 let computerScore = 0;
 let round = 0;
 
 // Win / Lose message
 const outcomeMessage = document.querySelector('h1');
-// Running/final score variables
+// Running score messages
 const yourScore = document.getElementById("yscore");
 const compScore = document.getElementById("cscore");
 
-// A function that generates a random number between 1 and 3
+// Random number generator (between 1 and 3)
 function getRandomNumber() {
     let num = Math.floor(Math.random() * 4);
-    if (num === 1 || num === 2 || num === 3) {
-        return num;
+    if (num === 0) {
+        return getRandomNumber();
     }
-    return getRandomNumber();
+    return num;
 }
 
-// A function that randomly returns either ‘Rock’ ‘Paper’ or ‘Scissors’.  
+// Randomly returns either ‘Rock’ ‘Paper’ or ‘Scissors’.  
 function getComputerChoice () {
     let num = getRandomNumber();
     if (num === 1){
@@ -34,7 +43,7 @@ function getComputerChoice () {
     }
 }
 
-// A function that plays a single round of Rock Paper Scissors. ("You Lose! Paper beats Rock"); 
+// Plays a round of Rock Paper Scissors & displays winner
 function playRound(userInput, computerSelection) {
     if (userInput === "rock"){
         round++;
@@ -75,13 +84,11 @@ function playRound(userInput, computerSelection) {
     }
 }
 
-// A function that plays a 5-round game of RPS. 
+// Plays a 5-round game of RPS. 
 function game() {
     if (round < 5) {
-        // Get user input
-        let userInput = document.getElementById("select").value;
-
-        // Generate computer selection
+        // Get user input & generate computer selection
+        let userInput = event.target.className;
         let computerSelection = getComputerChoice();
 
         // Play 1 round of RPS and increment score
